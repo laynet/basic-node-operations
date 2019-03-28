@@ -13,8 +13,11 @@
      case "echo":
       commandLibrary.echo(userInputArray.slice(1).join(" "));
       break;
-      case "cat":
+     case "cat":
         commandLibrary.cat(userInputArray.slice(1));
+        break;
+     case "head" :
+        commandLibrary.head(userInputArray.slice(1));
         break;
    }
 }
@@ -30,8 +33,20 @@
        if (err) throw err;
        done(data);
      });
+   },
+
+   "head" : function(fullPath) {
+     const fileName = fullPath[0];
+     fs.readFile(fileName, (err, data) => {
+       if (err) throw err;
+       var text = data.toString('utf8');
+       var slicedText = text.split('\n').slice(0, 10).join('\n');
+       var bufferText = Buffer.from(slicedText, 'utf8');
+       done(bufferText);
+     });
    }
- };
+
+  };
 
  module.exports.commandLibrary = commandLibrary;
  module.exports.evaluateCmd = evaluateCmd;
