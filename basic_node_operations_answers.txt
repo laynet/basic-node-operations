@@ -85,3 +85,12 @@ module.exports.evaluateCmd = evaluateCmd;
 2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
 
 I used uniq bash.js | sort. The out put returned the content of uniq (which removes redundant lines) and displayed them in alphabetic order by line, which is what sort does
+
+6.
+
+var x =  "I'm learning to program algorithms!"
+function reverseString(inputString) {
+  return inputString.split('').reverse().join('').split(' ').reverse().join(' ');
+}
+
+reverseString(x);
