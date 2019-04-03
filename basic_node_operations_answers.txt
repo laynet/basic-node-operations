@@ -2,29 +2,56 @@
 
 sort - returned the file sorted alphabetically by line
 break;
-commandLibrary.cat(userInputArray.slice(1));
-done(data);
-if (err) throw err;
-break;
-case "cat":
-commandLibrary.echo(userInputArray.slice(1).join(" "));
-});
-case "echo":
-const fileName = fullPath[0];
-done(userInput);
-fs.readFile(fileName, (err, data) => {
-"cat" : function(fullPath) {
-"echo": function(userInput) {
+       break;
+       break;
+       commandLibrary.cat(userInputArray.slice(1));
+       commandLibrary.head(userInputArray.slice(1));
+       commandLibrary.tail(userInputArray.slice(1));
+      done(bufferText);
+      done(bufferText);
+      done(data);
+      if (err) throw err;
+      if (err) throw err;
+      if (err) throw err;
+      var bufferText = Buffer.from(slicedText, 'utf8');
+      var bufferText = Buffer.from(slicedText, 'utf8');
+      var slicedText = text.split('\n').slice(0, 10).join('\n');
+      var slicedText = text.split('\n').slice(-10).join('\n');
+      var text = data.toString('utf8');
+      var text = data.toString('utf8');
+     break;
+     commandLibrary.echo(userInputArray.slice(1).join(" "));
+    });
+    });
+    });
+    case "cat":
+    case "echo":
+    case "head" :
+    case "tail" :
+    const fileName = fullPath[0];
+    const fileName = fullPath[0];
+    const fileName = fullPath[0];
+    default: process.stdout.write('command cannot be found');
+    done(userInput);
+    fs.readFile(fileName, (err, data) => {
+    fs.readFile(fileName, (err, data) => {
+    fs.readFile(fileName, (err, data) => {
+  "cat" : function(fullPath) {
+  "echo": function(userInput) {
+  "head" : function(fullPath) {
+  "tail" : function(fullPath) {
+  }
+  }
+  },
+  },
+  },
+  const command = userInputArray[0];
+  const userInputArray = userInput.split(" ");
+  process.stdout.write('\nprompt > ');
+  process.stdout.write(output);
+  switch (command) {
+ };
 }
-}
-},
-const command = userInputArray[0];
-const userInputArray = userInput.split(" ");
-process.stdout.write('\nprompt > ');
-process.stdout.write(output);
-switch (command) {
-}
-};
 const commandLibrary ={
 const fs = require("fs");
 function done(output) {
@@ -85,6 +112,17 @@ module.exports.evaluateCmd = evaluateCmd;
 2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
 
 I used uniq bash.js | sort. The out put returned the content of uniq (which removes redundant lines) and displayed them in alphabetic order by line, which is what sort does
+
+commands.evaluateCmd(userInput);
+userInput = userInput.toString().trim();
+
+
+
+});
+const commands = require("./command.js");
+process.stdin.on('data', (userInput) => {
+process.stdout.write('prompt > ');
+
 
 6.
 
